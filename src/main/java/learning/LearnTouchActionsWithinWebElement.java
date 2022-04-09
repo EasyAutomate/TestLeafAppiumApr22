@@ -26,12 +26,15 @@ public class LearnTouchActionsWithinWebElement {
 		dc.setCapability("noReset", true);
 		AppiumDriver driver = new AppiumDriver(new URL("http://0.0.0.0:4723/wd/hub"), dc);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		WebElement element = driver.findElement(By.xpath(
-				"//android.view.View[@content-desc='More results for Welcome to Google Play']/../following-sibling::android.view.View"));
+		WebElement element = null;
+		try {
+			element = driver.findElement(By.xpath(
+					"//android.view.View[@content-desc='More results for Welcome to Google Play']/../following-sibling::android.view.View"));
+		} catch (Exception e) {
+
+		}
 		String bounds = element.getAttribute("bounds");
 		String[] split = bounds.replace("][", "!").replace("[", "").replace("]", "").split("!");
-		System.out.println(split[0]);
-		System.out.println(split[1]);
 		String[] eleStart = split[0].split(",");
 		String[] eleEnd = split[1].split(",");
 		// Swipe left
@@ -43,15 +46,12 @@ public class LearnTouchActionsWithinWebElement {
 				+ Integer.parseInt(eleStart[0]);
 		int endY = (int) ((Integer.parseInt(eleEnd[1]) - Integer.parseInt(eleStart[1])) * 0.5)
 				+ Integer.parseInt(eleStart[1]);
-
 		PointerInput input3 = new PointerInput(Kind.TOUCH, "finger1");
 		Sequence swipeLeft = new Sequence(input3, 1);
 		swipeLeft.addAction(input3.createPointerMove(Duration.ofMillis(0), Origin.viewport(), startX, startY));
 		swipeLeft.addAction(input3.createPointerDown(MouseButton.LEFT.asArg()));
 		swipeLeft.addAction(input3.createPointerMove(Duration.ofMillis(2000), Origin.viewport(), endX, endY));
 		swipeLeft.addAction(input3.createPointerUp(MouseButton.LEFT.asArg()));
-		driver.perform(Arrays.asList(swipeLeft));
-		driver.perform(Arrays.asList(swipeLeft));
 		driver.perform(Arrays.asList(swipeLeft));
 
 	}
