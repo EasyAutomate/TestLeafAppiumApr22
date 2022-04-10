@@ -1,0 +1,10 @@
+1. Appium can automate only visible portion of code
+2. In most of the cases (Native app) we would be using XPATH as the locator since most of the app would be built earlier before we start the automation. So we need be careful in writing the XPATH. Note: Never use the index option as it changes based on the screen size. Try to use other option to write your XPATH eg. with text, preceding, following etc.
+3. If you search an element in Appium Inspector and click, it might not hightlight in image (Known bug from 1.21.0. Use 1.20.X to overcome this issue)
+4. To inspect or use Appium inspector for hybrid apps, click the web icon on top, choose the dropdown option for Webview and then start inspecting it. I recommend to use Chrome Inspector (chrome://inspect) rather using Appium inspector for Hybrid App (WebView) and Mobile web
+5. Appium inspector cannot identify the overlapping elements. We need to manually identify the element in source code and identify the locators.
+6. To locate Id and Name locators in Hybrid App (WebView) and Mobile web is not working in Appium. NoSuchElementException would be thrown. Known issue for more than a year. We need to convert Id and Name as Xpath and to inspect the element.
+7. If the screenshot is disabled in App, Appium will not be able to identify the locators. We need to ask Dev team to provide a build to identify the locators.
+8. If app is obfuscated then we might have challenges in identifying the locators. We might need to use XPATH for all the places eventhought id/name is provided by the dev team
+
+
