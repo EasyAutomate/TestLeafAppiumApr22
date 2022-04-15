@@ -34,8 +34,9 @@ import io.appium.java_client.PullsFiles;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.remote.SupportsRotation;
+import utils.ExtentReporter;
 
-public class CommonNativeWrappers {
+public class CommonNativeWrappers extends ExtentReporter {
 	public AppiumDriver driver;
 	public static final int MAX_SCROLL = 10;
 

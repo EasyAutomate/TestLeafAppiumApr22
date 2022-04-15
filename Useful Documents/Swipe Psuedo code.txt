@@ -1,5 +1,0 @@
-Swipe
-1. Move to startX and startY position
-2. Press and hold in startX and startY position
-3. Move to endX and endY position
-4. Release in endX and endY position
