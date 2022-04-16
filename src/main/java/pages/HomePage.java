@@ -16,7 +16,11 @@ public class HomePage extends GenericWrappers {
 		this.driver = driver;
 		this.test = test;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-		eleIsDisplayed(userNameTxt);
+		if(eleIsDisplayed(userNameTxt)) {
+			reportStep("Home page is displayed", "pass");
+		} else {
+			reportStep("Home page is not displayed", "fail");
+		}
 	}
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Rajkumar Ganesan']")

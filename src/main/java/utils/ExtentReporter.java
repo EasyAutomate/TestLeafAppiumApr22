@@ -16,7 +16,7 @@ public abstract class ExtentReporter {
 	public ExtentTest test, suiteTest;
 	public String testCaseName, testNodes, testDescription, category, authors;
 
-	public void startReport() {
+	public void initializeReport() {
 		// report = new ExtentHtmlReporter("./reports/result.html");
 		report = new ExtentSparkReporter("./reports/result.html");
 		report.config().setDocumentTitle("Mobile Automation");
@@ -25,14 +25,14 @@ public abstract class ExtentReporter {
 		extent.attachReporter(report);
 	}
 
-	public ExtentTest startTestModule(String testCaseName, String testDescription) {
+	public ExtentTest initializeTestCase(String testCaseName, String testDescription) {
 		suiteTest = extent.createTest(testCaseName, testDescription);
 		suiteTest.assignAuthor(authors);
 		suiteTest.assignCategory(category);
 		return suiteTest;
 	}
 
-	public ExtentTest startTestCase(String testNodes) {
+	public ExtentTest initializeTestNodeForEachTC(String testNodes) {
 		test = suiteTest.createNode(testNodes);
 		return test;
 	}
@@ -70,7 +70,7 @@ public abstract class ExtentReporter {
 		reportStep(desc, status, true);
 	}
 
-	public void endReport() {
+	public void saveReport() {
 		extent.flush();
 	}
 

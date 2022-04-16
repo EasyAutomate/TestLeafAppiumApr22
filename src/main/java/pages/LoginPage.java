@@ -1,5 +1,7 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,11 +14,13 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import wrappers.GenericWrappers;
 
 public class LoginPage extends GenericWrappers {
-
+//	String platform;
 	public LoginPage(AppiumDriver driver, ExtentTest test) {
 		this.driver = driver;
 		this.test = test;
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+//		platform = driver.getCapabilities().getCapability("platformName").toString();
+//		System.out.println(platform);
+		PageFactory.initElements(new AppiumFieldDecorator(driver,Duration.ofSeconds(60)), this);
 		eleIsDisplayed(emailTxtBox);
 	}
 
@@ -33,8 +37,6 @@ public class LoginPage extends GenericWrappers {
 	private WebElement loginBtn;
 
 	public LoginPage enterEmailAddress(String email) {
-//		String platform = driver.getCapabilities().getCapability("platformName").toString();
-//		System.out.println(platform);
 		if (enterValue(emailTxtBox, email)) {
 			reportStep("Username entered successfully", "pass");
 		} else {

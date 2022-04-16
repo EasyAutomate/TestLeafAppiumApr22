@@ -15,14 +15,14 @@ public class LoginTC extends ProjectSpecificWrappers {
 		testDescription="Login funtionality";
 		category = "Smoke";
 		authors = "Lokesh Kumar";
-		//dataSheetName = "TC001";
+		dataSheetName = "TC001";
 	}
 	
-	@Test
-	public void runMyTC() {
+	@Test(dataProvider = "fetchData")
+	public void runMyTC(String userName, String password) {
 		new LoginPage(driver,test)
-		.enterEmailAddress("rajkumar@testleaf.com")
-		.enterPassword("Leaf@123")
+		.enterEmailAddress(userName)
+		.enterPassword(password)
 		.clickLogin();
 	}
 }

@@ -17,12 +17,12 @@ public class ProjectSpecificWrappers extends GenericWrappers {
 
 	@BeforeSuite
 	public void bs() {
-		startReport();
+		initializeReport();
 	}
 
 	@BeforeClass
 	public void bc() {
-		startTestModule(testCaseName, testDescription);
+		initializeTestCase(testCaseName, testDescription);
 	}
 
 	@Parameters({ "platformName", "deviceName", "udid", "appPackage", "appActivity", "automationName",
@@ -34,7 +34,7 @@ public class ProjectSpecificWrappers extends GenericWrappers {
 			@Optional("") String chromeDriverPort, @Optional("") String systemPort, @Optional("") String xcodeOrgId,
 			@Optional("") String xcodeSigningId, @Optional("") String bundleId, @Optional("") String app,
 			@Optional("") String mjpegServerPort, @Optional("") String wdaLocalPort) {
-		startTestCase(testNodes);
+		initializeTestNodeForEachTC(testNodes);
 		launchApp(platformName, deviceName, udid, appPackage, appActivity, automationName, chromeDriverPort, systemPort,
 				xcodeOrgId, xcodeSigningId, bundleId, app, mjpegServerPort, wdaLocalPort);
 	}
@@ -46,7 +46,7 @@ public class ProjectSpecificWrappers extends GenericWrappers {
 
 	@AfterSuite(alwaysRun = true)
 	public void as() {
-		endReport();
+		saveReport();
 	}
 
 	@DataProvider(name = "fetchData")
