@@ -9,7 +9,9 @@ import wrappers.GenericWrappers;
 public class Hooks extends GenericWrappers {
 	@AfterStep
 	public void afterEachStep(Scenario scenario) {
-		byte[] screenshot = getDriver().getScreenshotAs(OutputType.BYTES);
-		scenario.attach(screenshot, "image/png", scenario.getId());
+		if (scenario.isFailed()) {
+			byte[] screenshot = getDriver().getScreenshotAs(OutputType.BYTES);
+			scenario.attach(screenshot, "image/png", scenario.getId());
+		}
 	}
 }

@@ -12,7 +12,9 @@ public class HomePage extends GenericWrappers {
 
 	public HomePage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
-		eleIsDisplayed(userNameTxt);
+		if(!eleIsDisplayed(userNameTxt)) {
+			throw new RuntimeException("Home page is not displayed");
+		}
 	}
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Rajkumar Ganesan']")
