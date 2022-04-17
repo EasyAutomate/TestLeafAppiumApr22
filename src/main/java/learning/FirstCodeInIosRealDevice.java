@@ -8,13 +8,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 
-public class FirstCodeInIos {
+public class FirstCodeInIosRealDevice {
 
 	public static void main(String[] args) throws MalformedURLException {
 		DesiredCapabilities dc = new DesiredCapabilities();
 		dc.setCapability("platformName", "iOS");
-		dc.setCapability("deviceName", "iPhone SE (3rd generation)");
-		dc.setCapability("app", System.getProperty("user.dir") + "/apks/UiCatalog.zip");
+		dc.setCapability("deviceName", "Lokesh");
+		dc.setCapability("app", "<path of ther iPhone App>");
+		dc.setCapability("udid", "<udid of real device>");
 		dc.setCapability("automationName", "XCUITest");
 		dc.setCapability("noReset", true);
 		AppiumDriver driver = new AppiumDriver(new URL("http://0.0.0.0:4723/wd/hub"), dc);

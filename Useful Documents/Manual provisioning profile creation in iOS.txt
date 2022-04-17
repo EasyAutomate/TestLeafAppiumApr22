@@ -1,0 +1,11 @@
+For Manual profile creation in iOS
+
+1. App Id —> Bundle Id of the application
+2. Certificate --> Request Certificate (.cer) from the machine which is used for automation (https://help.apple.com/developer-account/#/devbfa00fef7) —> upload the .cer file in developer account and generate the certificate —> Development/Distribution
+    1. For Cloud Provider —> Development
+    2. For Local real device —> Distribution
+3. Devices —> Add the UDID of the device
+
+Profile —> Add Profile —> Development —> Choose App Id —> Choose Certificate —> Choose Device —> Click generate —> Download the profile —> Choose this profile in Xcode for the app that need to be build (AUT/WebDriverAgent —> Based on the bundle ID chosen it should work)
+
+Profile —> Add Profile —> Distribution  —> Choose App Id —> Choose Certificate —> Click generate —> Download the profile —> Choose this profile in Xcode for the app that need to be build (AUT/WebDriverAgent —> Based on the bundle ID chosen it should work)
