@@ -1,0 +1,42 @@
+Manual Testing
+Suite
+	Scenarios
+		Test cases
+			Test Steps
+
+TestNG
+Suite
+	Test 
+		Class
+			Methods
+	
+
+Cucumber
+Project
+	Feature
+		Scenario
+			Steps
+
+Cucumber
+
+Feature --> Every scenario
+Scenario --> Test cases
+
+Project
+Feature
+Scenario
+Steps
+Step Definition
+Automation Library
+Test runner
+
+
+Keywords
+
+Given
+When 
+Then
+And
+But
+*
+

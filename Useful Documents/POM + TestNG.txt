@@ -1,0 +1,140 @@
+Page Object Model
+
+1. All reusable methods should be in a separate class (Wrapper Methods)
+2. Every page should be a separate class
+3. Every page should extends the reusable methods class
+4. Every action should be a separate method
+5. Each method in page class should return to the page it is landed
+6. Verify the page it has landed
+7. Every test case should extend the Wrappers class
+
+src/main/java
+	wrappers
+		GenericWrappers.java
+	pages
+		LoginPage.java extends GenericWrappers.java
+		public LoginPage() {
+		verifyUserNameTxtBoxIsDisplayed();
+		}
+		public LoginPage clearUserName(){
+		return this;
+		}
+		public LoginPage enterUserName(){
+		return this;
+		}
+		public HomePage clickLogin(){
+		return new HomePage();
+		}
+		public LoginPage clickLoginForFailure(){
+		return this;
+		}
+		public LoginPage verifyUserNameTxtBoxIsDisplayed(){
+		return this;
+		}
+		HomePage.java extends GenericWrappers.java
+src/main/resources
+src/test/java
+	testcases
+		TC001.java extends GenericWrappers.java
+			main method {
+			launchApp(.....);
+			new LoginPage().enterUserName().clickLogin().....;
+			}
+		TC002.java extends GenericWrappers.java
+			main method {
+			launchApp(.....);
+			new LoginPage().enterUserName().clickLogin().....;
+			}
+		RunAllTestCases() {
+		main method {
+		TC001.main();
+		TC002.main();
+		}
+		}	
+src/test/resources
+
+TestNG
+
+Suite
+	Test
+		Class
+			Methods
+
+@BeforeSuite
+	@BeforeTest
+		@BeforeClass
+			@BeforeMethod
+				@Test
+			@AfterMethod
+		@AfterClass
+	@AfterTest
+@AfterSuite
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+	<classes>
+		<class name="TC001"/>	
+		<class name="TC002"/>
+	</classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->		
+
+POM+TestNG
+
+src/main/java
+	wrappers
+		GenericWrappers.java
+		ProjectSpecificWrappers.java extends GenericWrappers.java
+			@BeforeMethod
+			public void bm() {
+			launchApp(.....);
+			}
+			@AfterMethod
+			public void am() {
+			closeApp();
+			}
+	pages
+		LoginPage.java extends GenericWrappers.java
+			public LoginPage() {
+			verifyUserNameTxtBoxIsDisplayed();
+			}
+			public LoginPage clearUserName(){
+			log the status of the method --> Reporter
+			return this;
+			}
+			public LoginPage enterUserName(){
+			return this;
+			}
+			public HomePage clickLogin(){
+			return new HomePage();
+			}
+			public LoginPage clickLoginForFailure(){
+			return this;
+			}
+			public LoginPage verifyUserNameTxtBoxIsDisplayed(){
+			return this;
+			}
+		HomePage.java extends GenericWrappers.java
+	utils
+		Reporter.java extends GenericWrappers.java
+			initialize reports
+			create a log for each tc
+			log test step status for each method 
+			save report
+src/main/resources
+src/test/java
+	testcases
+		TC001.java extends ProjectSpecificWrappers.java
+			@Test
+			pubic void runMethod() {
+			new LoginPage().enterUserName().clickLogin().....;
+			}
+		TC002.java extends ProjectSpecificWrappers.java
+			@Test
+			pubic void runMethod() {
+			new LoginPage().enterUserName().clickLogin().....;
+			}	
+src/test/resources
+
