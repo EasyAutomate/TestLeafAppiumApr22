@@ -119,4 +119,18 @@ public class CommonWebWrappers extends CommonNativeWrappers {
 		return true;
 	}
 
+//	public void clickGivenButtonInKeyboardByNameInWebView(String name) {
+//		switchNativeview();
+//		if(isKeyboardShown()) {
+//		click(getWebElement(Locators.NAME.toString(), name));}
+//		switchWebview();
+//	}
+//	
+//	public void clickGivenButtonInKeyboardByXpathInWebView(String xPath) {
+//		switchNativeview();
+//		if(isKeyboardShown()) {
+//		click(getWebElement(Locators.XPATH.toString(), xPath));}
+//		switchWebview();
+//	}
+
 }

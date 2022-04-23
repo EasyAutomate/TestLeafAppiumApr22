@@ -32,6 +32,7 @@ import io.appium.java_client.HidesKeyboard;
 import io.appium.java_client.InteractsWithApps;
 import io.appium.java_client.PullsFiles;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.remote.SupportsRotation;
 
@@ -83,7 +84,7 @@ public class CommonNativeWrappers {
 			} else if (platformName.equalsIgnoreCase("iOS")) {
 				// Comment the below line based on need
 				dc.setCapability("autoAcceptAlerts", true);
-				// driver = new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"), dc);
+				driver = new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"), dc);
 			}
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		} catch (Exception e) {
@@ -520,6 +521,10 @@ public class CommonNativeWrappers {
 		}
 	}
 
+	public boolean isKeyboardShown() {
+		return ((HasOnScreenKeyboard) driver).isKeyboardShown();
+	}
+
 	// To get orientation set in the application
 	public String getOrientation() {
 		return ((SupportsRotation) driver).getOrientation().toString();
@@ -531,7 +536,7 @@ public class CommonNativeWrappers {
 		wait.until(ExpectedConditions.elementToBeClickable(ele));
 		ele.clear();
 		ele.sendKeys(data);
-		hideKeyboard();
+		// hideKeyboard();
 		return true;
 	}
 
