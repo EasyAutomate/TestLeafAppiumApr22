@@ -366,7 +366,13 @@ public class CommonNativeWrappers {
 
 	// To scroll down within web element in application
 	public boolean swipeDowninAppWithWebElement(WebElement ele) {
-		String bounds = ele.getAttribute("bounds");
+		String bounds = null;
+		if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("Android")) {
+			bounds = ele.getAttribute("bounds");
+		} else if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("iOS")) {
+			bounds = "[" + ele.getAttribute("x") + "," + ele.getAttribute("y") + "][" + ele.getAttribute("width") + ","
+					+ ele.getAttribute("height") + "]";
+		}
 		String[] split = bounds.replace("][", "!").replace("[", "").replace("]", "").split("!");
 		String[] eleStart = split[0].split(",");
 		String[] eleEnd = split[1].split(",");
@@ -383,7 +389,13 @@ public class CommonNativeWrappers {
 
 	// To scroll up within web element in application
 	public boolean swipeUpinAppWithWebElement(WebElement ele) {
-		String bounds = ele.getAttribute("bounds");
+		String bounds = null;
+		if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("Android")) {
+			bounds = ele.getAttribute("bounds");
+		} else if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("iOS")) {
+			bounds = "[" + ele.getAttribute("x") + "," + ele.getAttribute("y") + "][" + ele.getAttribute("width") + ","
+					+ ele.getAttribute("height") + "]";
+		}
 		String[] split = bounds.replace("][", "!").replace("[", "").replace("]", "").split("!");
 		String[] eleStart = split[0].split(",");
 		String[] eleEnd = split[1].split(",");
@@ -400,7 +412,13 @@ public class CommonNativeWrappers {
 
 	// To scroll right within web element in application
 	public boolean swipeRightinAppWithWebElement(WebElement ele) {
-		String bounds = ele.getAttribute("bounds");
+		String bounds = null;
+		if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("Android")) {
+			bounds = ele.getAttribute("bounds");
+		} else if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("iOS")) {
+			bounds = "[" + ele.getAttribute("x") + "," + ele.getAttribute("y") + "][" + ele.getAttribute("width") + ","
+					+ ele.getAttribute("height") + "]";
+		}
 		String[] split = bounds.replace("][", "!").replace("[", "").replace("]", "").split("!");
 		String[] eleStart = split[0].split(",");
 		String[] eleEnd = split[1].split(",");
@@ -417,7 +435,13 @@ public class CommonNativeWrappers {
 
 	// To scroll left within web element in application
 	public boolean swipeLeftinAppWithWebElement(WebElement ele) {
-		String bounds = ele.getAttribute("bounds");
+		String bounds = null;
+		if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("Android")) {
+			bounds = ele.getAttribute("bounds");
+		} else if (driver.getCapabilities().getPlatformName().toString().equalsIgnoreCase("iOS")) {
+			bounds = "[" + ele.getAttribute("x") + "," + ele.getAttribute("y") + "][" + ele.getAttribute("width") + ","
+					+ ele.getAttribute("height") + "]";
+		}
 		String[] split = bounds.replace("][", "!").replace("[", "").replace("]", "").split("!");
 		String[] eleStart = split[0].split(",");
 		String[] eleEnd = split[1].split(",");
